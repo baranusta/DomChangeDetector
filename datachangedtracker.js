@@ -4,16 +4,14 @@ var DataChangedTracker = (function(){
 		
 	var trackedData = {num:0};
 	
-	method.initialize = function (trackedClasses, listener) {
+	method.initialize = function (trackedClass, listener) {
 
 	    if (typeof listener === "function") {
-	        trackedClasses.forEach(function (className) {
-	            var items = document.getElementsByClassName(className);
-	            for (var i = 0; i < items.length; i++) {
-	                items[i].onchange = onChange;
-	                trackedData[items[i].id] = new TrackedElement(items[i].id, items[i].value);
-	            }
-	        });
+	        var items = document.getElementsByClassName(trackedClass);
+	        for (var i = 0; i < items.length; i++) {
+	            items[i].onchange = onChange;
+	            trackedData[items[i].id] = new TrackedElement(items[i].id, items[i].value);
+	        }
 		    isDataChangedListener = listener;
 	    }
 	}
