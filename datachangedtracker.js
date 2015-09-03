@@ -9,7 +9,7 @@ var DataChangedTracker = (function(){
 	    if (typeof listener === "function") {
 	        var items = document.getElementsByClassName(trackedClass);
 	        for (var i = 0; i < items.length; i++) {
-	            items[i].onchange = onChange;
+	            items[i].addEventListener("onChange",onChange);
 	            trackedData[items[i].id] = new TrackedElement(items[i].id, items[i].value);
 	        }
 		    isDataChangedListener = listener;
